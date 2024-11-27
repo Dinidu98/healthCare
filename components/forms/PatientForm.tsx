@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
@@ -67,7 +66,7 @@ const PatientForm = () => {
         // console.log("failed to get ID or Failed. Response: ", user)
       }
 
-    } catch (error) {
+    } catch (error:any) {
       console.log(error);
     } finally {
       // setIsLoading(false)

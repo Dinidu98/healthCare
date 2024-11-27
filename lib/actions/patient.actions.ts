@@ -45,7 +45,7 @@ export const createUser = async (user: CreateUserParams) => {
           console.log("Returning existing user: ", existingUser);
           return existingUser;
         }
-      } catch (fetchError) {
+      } catch (fetchError:any) {
         console.log("Error fetching existing users: ", fetchError);
       }
     }
@@ -70,9 +70,9 @@ export const getUser = async (userId: string) => {
     const user = await users.get(userId);
     // console.log("From getUser: ", user);
     return parseStringify(user);
-  } catch (error) {
+  } catch (error:any) {
     // console.log("Error in getUser: ", error);
-    throw new Error("Failed to fetch user data");
+    throw new Error("Failed to fetch user data",error);
   }
 };
 
@@ -84,7 +84,7 @@ export const getPatient = async (userId: string) => {
       [Query.equal("userId", userId)]
     );
     return parseStringify(patient.documents[0]);
-  } catch (error) {
+  } catch (error:any) {
     console.log(error);
   }
 };
@@ -120,7 +120,7 @@ export const registerPatient = async ({
       }
     );
     return parseStringify(newPatient)
-  } catch (error) {
+  } catch (error:any) {
     console.log(error);
   }
 };

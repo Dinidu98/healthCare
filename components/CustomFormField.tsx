@@ -1,9 +1,7 @@
 "user client";
 import React from "react";
 import {
-  Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -19,7 +17,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import {
     Select,
     SelectContent,
-    SelectItem,
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select"
@@ -45,7 +42,6 @@ interface CustomProps {
 
 const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
   const {
-    fieldType,
     iconSrc,
     iconAlt,
     placeholder,

@@ -3,14 +3,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useEffect, useState } from "react";
 import {  getAppointmentSchema } from "@/lib/validation";
-import { createUser } from "@/lib/actions/patient.actions";
-import router from "next/router";
 import { FormFieldType } from "./PatientForm";
 import { createAppointment, updateAppointment } from "@/lib/actions/appointment.actions";
 import { useRouter } from "next/navigation";
@@ -130,7 +127,7 @@ const AppointmentForm = ({
     }
 
 
-    } catch (error) {
+    } catch (error:any) {
       console.log(error);
     }finally{
       // setIsLoading(false)

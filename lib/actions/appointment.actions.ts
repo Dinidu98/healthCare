@@ -1,8 +1,7 @@
 'use server'
 
 import { ID, Query } from "node-appwrite";
-import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases, ENDPOINT, messaging } from "../appwrite.config";
-import { formatDateTime, parseStringify } from "../utils";
+import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases, messaging } from "../appwrite.config";
 import { Appointment } from "@/types/appwrite.types";
 import { revalidatePath } from "next/cache";
 
@@ -97,10 +96,8 @@ export const getRecentAppointmentList = async () => {
 }
 
 export const updateAppointment = async ({
-  userId,
   appointmentId,
   appointment,
-  type
 }: UpdateAppointmentParams) => {
   try {
     const updatedAppointment = await databases.updateDocument(
@@ -140,7 +137,7 @@ export const sendSMSNotification = async (userId: string, content: string) => {
     );
     console.log("Message sent successfully:", message);
     return message;
-  } catch (error) {
+  } catch (error:any) {
     console.error("Failed to send SMS:", error);
     throw error; // Or return an appropriate fallback
   }
