@@ -5,18 +5,15 @@ import PassKeyModal from "@/components/PassKeyModal";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams();
-
   const isAdmin = searchParams.get("admin") === "true";
-
 
   return (
     <div className="flex h-screen max-h-screen">
-
-      {isAdmin && <PassKeyModal/>}
+      {isAdmin && <PassKeyModal />}
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[465px]">
           {/* <Image
@@ -38,13 +35,21 @@ export default function Home() {
           </div>
         </div>
       </section>
-  <Image
-    src="/assets/icons/logo-full.png"
-    height={800}
-    width={800}
-    alt="patient"
-    className="side-img max-w-[50%]"
-  />
+      <Image
+        src="/assets/icons/logo-full.png"
+        height={800}
+        width={800}
+        alt="patient"
+        className="side-img max-w-[50%]"
+      />
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
